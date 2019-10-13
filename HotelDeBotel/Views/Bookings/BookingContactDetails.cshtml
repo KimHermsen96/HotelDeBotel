@@ -1,0 +1,97 @@
+﻿@model HotelDeBotel.Models.BookingViewModel
+
+<div class="container center_div">
+
+    <div class="row">
+        <div class="col">
+            <ul class="progressbar">
+                <li>Aantal Personen </li>
+                <li class="active">Contact Gegevens </li>
+                <li>Prijs berekenen & Reservering bevestigen </li>
+            </ul>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="row mt-5">
+            <div class="col-7">
+                <h4> Contactgegevens </h4>
+
+                <div class="mt-5 mb-5">
+                    <b> Datum boeking: </b> @Model.Date.ToShortDateString() <br />
+                    <b> Aantal personen: </b> @Model.NumberOfGuests
+                </div>
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.Room.Id)
+                @Html.HiddenFor(m => m.NumberOfGuests)
+                @Html.HiddenFor(m => m.Date)
+
+
+                @for (int i = 0; i < Model.NumberOfGuests; i++)
+                {
+
+                    <h5> Gast @(i + 1) </h5>
+
+                    <div class="form-group row ">
+                        <label class="col-md-4 col-form-label "> Naam </label>
+                        @Html.EditorFor(model => model.Guests[i].Name, new { htmlAttributes = new { @class = "form-control col-7", @type = "text", required = "Naam is verplicht" } })
+                        @Html.ValidationMessageFor(model => model.Guests[i].Name, "", new { @class = "text-danger col-7" })
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label"> E-mailadres</label>
+                        @Html.EditorFor(model => model.Guests[i].EmailAddress, new { htmlAttributes = new { @class = "form-control col-7", @type = "text", required = "E-mail is verplicht" } })
+                        @Html.ValidationMessageFor(model => model.Guests[i].EmailAddress, "", new { @class = "text-danger col-7" })
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label"> Postcode</label>
+                        @Html.EditorFor(model => model.Guests[i].Zipcode, new { htmlAttributes = new { @class = "form-control col-7", @type = "text", required = "Postcode is verplicht" } })
+                        @Html.ValidationMessageFor(model => model.Guests[i].Zipcode, "", new { @class = "text-danger col-7" })
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label"> Huisnummer </label>
+                        @Html.EditorFor(model => model.Guests[i].HouseNumber, new { htmlAttributes = new { @class = "form-control col-7", @type = "number", @min = "1", required = "Huisnummer is verplicht" } })
+                        @Html.ValidationMessageFor(model => model.Guests[i].HouseNumber, "", new { @class = "text-danger col-7" })
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"> Huisnummer toevoeging </label>
+                        @Html.EditorFor(model => model.Guests[i].Addition, new { htmlAttributes = new { @class = "form-control col-7    ", @type = "text" } })
+                        @Html.ValidationMessageFor(model => model.Guests[i].Addition, "", new { @class = "text-danger col-7" })
+                    </div>
+                }
+
+                <div class="form-group mt-5">
+                    <input type="submit" value="Volgende stap" formaction="@Url.Action("BookingCalculateDiscount")" class="btn btn-dark" />
+                </div>
+
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="@Model.Room.Image" alt="Card image cap">
+                    @Html.HiddenFor(m => m.Room.Image)
+                    <div class="card-body">
+                        <div class="font-weight-bold">
+                            @Html.DisplayFor(modelItem => Model.Room.Name) <br />
+                            @Html.HiddenFor(m => m.Room.Name)
+                        </div>
+                        Aantal personen:
+                        @Html.DisplayFor(modelItem => Model.Room.Size) <br />
+                        @Html.HiddenFor(m => m.Room.Size)
+                        Prijs:
+                        @Html.DisplayFor(modelItem => Model.Room.Price) <br />
+                        @Html.HiddenFor(m => m.Room.Price)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

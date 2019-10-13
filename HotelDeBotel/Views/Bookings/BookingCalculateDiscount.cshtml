@@ -1,0 +1,127 @@
+﻿@model HotelDeBotel.Models.BookingViewModel
+
+<div class="container center_div">
+
+    <div class="row">
+        <div class="col">
+            <ul class="progressbar">
+                <li>Aantal Personen </li>
+                <li>Contact Gegevens </li>
+                <li class="active">Prijs berekenen & Reservering bevestigen</li>
+            </ul>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <div class="row mt-5">
+            <div class="col">
+                <h4> Gegevens controlleren en korting berekenen </h4>
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.Room.Id)
+                @Html.HiddenFor(m => m.NumberOfGuests)
+                @Html.HiddenFor(m => m.Date)
+                
+                <div class="container pl-0 mt-3">
+                    <div class="row">
+                        <div class="col-6">  Datum  </div>
+                        <div class="col-6">
+                            @Model.Date.ToShortDateString()
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">  Aantal personen  </div>
+                        <div class="col-6">
+                            @Model.NumberOfGuests
+                        </div>
+                    </div>
+                    <hr />
+                    <h6> Gasten </h6>
+
+                    @for (int i = 0; i < Model.NumberOfGuests; i++)
+                    {
+                        <div class="row">
+                            <div class="col-6"> Naam </div>
+                            <div class="col-6">
+                                @Model.Guests[i].Name
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"> E-mail </div>
+                            <div class="col-6">
+                                @Model.Guests[i].EmailAddress
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"> Postcode </div>
+                            <div class="col-6">
+                                @Model.Guests[i].Zipcode
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"> Huisnummer </div>
+                            <div class="col-6">
+                                @Model.Guests[i].HouseNumber
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6"> Toevoeging </div>
+                            <div class="col-6">
+                                @Model.Guests[i].Addition
+                            </div>
+                        </div>
+                        @Html.HiddenFor(m => m.Guests[i].Name)
+                        @Html.HiddenFor(m => m.Guests[i].HouseNumber)
+                        @Html.HiddenFor(m => m.Guests[i].Addition)
+                        @Html.HiddenFor(m => m.Guests[i].Zipcode)
+                        @Html.HiddenFor(m => m.Guests[i].EmailAddress)
+
+                    }
+                    <hr />
+                    <div class="row">
+                        <div class="col-6"> Prijs </div>
+                        <div class="col-6">
+                            € @Model.Price
+                            @Html.HiddenFor(m => m.Price)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"> Korting </div>
+                        <div class="col-6">
+                            @Model.Discount %
+                            @Html.HiddenFor(m => m.Discount)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-5">
+                    <input type="submit" value="Bevestig boeking" formaction="@Url.Action("SaveBooking")" class="btn btn-dark btn-block" />
+                </div>
+
+
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="@Model.Room.Image" alt="Card image cap">
+                    @Html.HiddenFor(m => m.Room.Image)
+                    <div class="card-body">
+                        <div class="font-weight-bold">
+                            @Html.DisplayFor(modelItem => Model.Room.Name) <br />
+                            @Html.HiddenFor(m => m.Room.Name)
+                        </div>  
+                        Aantal personen:
+                        @Html.DisplayFor(modelItem => Model.Room.Size) <br />
+                        @Html.HiddenFor(m => m.Room.Size)
+                        Prijs:
+                        @Html.DisplayFor(modelItem => Model.Room.Price) <br />
+                        @Html.HiddenFor(m => m.Room.Price)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

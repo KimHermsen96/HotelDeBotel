@@ -1,0 +1,94 @@
+﻿@model HotelDeBotel.Domain.Booking
+
+
+
+<div class="container center_div mb-5">
+    <h4> Boeking details</h4>
+
+    <hr />
+    <div class="row">
+        <div class="col-6">
+            <div class="container pl-0 mt-3">
+                <div class="row">
+                    <div class="col-6"> Datum </div>
+                    <div class="col-6">
+                        @Model.Date.ToShortDateString()
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6"> Aantal personen </div>
+                    <div class="col-6">
+                        @Model.Guests.Count
+                    </div>
+                </div>
+                <hr />
+                <h6> Gasten </h6>
+
+                @foreach (var guest in Model.Guests)
+                {
+                    <div class="row">
+                        <div class="col-6"> Naam </div>
+                        <div class="col-6">
+                            @guest.Name
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"> E-mail </div>
+                        <div class="col-6">
+                            @guest.EmailAddress
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"> Postcode </div>
+                        <div class="col-6">
+                            @guest.Zipcode
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"> Huisnummer </div>
+                        <div class="col-6">
+                            @guest.HouseNumber
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6"> Toevoeging </div>
+                        <div class="col-6">
+                            @guest.Addition
+                        </div>
+                    </div>
+                }
+
+                <hr />
+                <div class="row">
+                    <div class="col-6"> Prijs met korting </div>
+                    <div class="col-6">
+                        € @Model.Price
+                        @Html.HiddenFor(m => m.Price)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" offset-2 col-4">
+            <div class="card">
+                <img class="card-img-top" src="@Model.Room.Image" alt="Card image cap">
+                @Html.HiddenFor(m => m.Room.Image)
+                <div class="card-body">
+                    <div class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => Model.Room.Name) <br />
+                        @Html.HiddenFor(m => m.Room.Name)
+                    </div>
+                    Aantal personen:
+                    @Html.DisplayFor(modelItem => Model.Room.Size) <br />
+                    @Html.HiddenFor(m => m.Room.Size)
+                    Prijs:
+                    @Html.DisplayFor(modelItem => Model.Room.Price) <br />
+                    @Html.HiddenFor(m => m.Room.Price)
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Terug naar overzicht", "Index", null, new { @class = "btn btn-dark mt-5 float-right" })
+    </p>
+</div>

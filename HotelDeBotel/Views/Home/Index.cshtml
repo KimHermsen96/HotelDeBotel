@@ -1,0 +1,44 @@
+﻿@using HotelDeBotel.Controllers
+@using HotelDeBotel.Domain
+@model IEnumerable<HotelDeBotel.Domain.Room>
+
+
+<div class="container center_div">
+
+    <div class="jumbotron ">
+        <h1> <b> Hotel de Botel </b></h1>
+        <h5> <b>Stay. &nbsp Eat. &nbsp Drink.</b> </h5>
+    </div>
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-4">
+
+                <div class="card h-100">
+                    <img class="card-img-top h-50" src="@item.Image" alt="Kamer afbeelding">
+
+                    <div class="card-body">
+                        <div class="font-weight-bold">
+                            @Html.DisplayFor(modelItem => item.Name) <br />
+                        </div>
+                        Aantal personen:
+                        @Html.DisplayFor(modelItem => item.Size) <br />
+
+                        Prijs:
+                        @Html.DisplayFor(modelItem => item.Price) <br />
+                    </div>
+
+                    @if (User.IsInRole("User") || User.IsInRole("Employee"))
+                    {
+                        <div class="card-footer">
+                            @Html.ActionLink("Reserveren", "Create", "Bookings" , new { id = item.Id }, new { @class = "btn btn-dark" })
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

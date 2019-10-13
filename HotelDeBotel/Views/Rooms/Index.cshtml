@@ -1,0 +1,53 @@
+﻿
+@using System.Security.Cryptography
+@model HotelDeBotel.Models.RoomsViewModel
+
+<div class="container center_div">
+    <div class="row">
+        @if (User.IsInRole("Employee"))
+        {
+            <div class="mb-3 float-right">
+                @Html.ActionLink("Voeg kamer toe", "Create", null, new { @class = " btn btn-dark float-right" })
+            </div>
+        }
+    </div>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <h6> *Om een kamer te boeken moet u ingelogd zijn.</h6>
+    }
+    <div class="row">
+        @foreach (var item in Model.Rooms)
+        {
+            <div class="col-4 p-2 mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top h-50" src="@item.Image" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="font-weight-bold">
+                            @Html.DisplayFor(modelItem => item.Name) <br />
+                        </div>
+                        Aantal personen:
+                        @Html.DisplayFor(modelItem => item.Size) <br />
+                        Prijs:
+                        @Html.DisplayFor(modelItem => item.Price) <br />
+                    </div>
+
+                    @if (User.IsInRole("User") || User.IsInRole("Employee"))
+                    {
+                        <div class="card-footer">
+                            @Html.ActionLink("Reserveren", "ReserveRoom", new { id = item.Id }, new { @class = "btn btn-dark" })
+                        </div>
+                    }
+                </div>
+                <div class="mt-2">
+                    @if (User.IsInRole("Employee"))
+                    {
+                        @Html.ActionLink("Aanpassen", "Edit", new { id = item.Id }, new { @class = "btn-sm btn-light " })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn-sm btn-light ml-1" })
+                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id }, new { @class = "btn-sm btn-light ml-1" })
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+            <img alt="logo" class="logo" src="@Url.Content("../../Content/Images/Logo2.png")">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav head-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Kamers", "Index", "Rooms")</li>
+                <li>@Html.ActionLink("Boekingen", "Index", "Bookings")</li>
+            </ul>
+        </div>
+
+        @{Html.RenderPartial("_loginpartial");}
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer class="mt-5">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - Kim Hermsen</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model HotelDeBotel.Models.IndexViewModel
+
+<div class="container center_div">
+    <h2>Account instellingen</h2>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dd>
+
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Verander je wachtwoord", "ChangePassword", null, new { @class = "btn btn-dark" })
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword", null, new { @class = "btn btn-dark" })
+                }
+
+            </dd>
+        </dl>
+    </div>
+</div>

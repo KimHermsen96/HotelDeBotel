@@ -1,0 +1,16 @@
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\HotelDeBotel.Domain.dll.config
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\HotelDeBotel.Domain.dll
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\HotelDeBotel.Domain.pdb
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\EntityFramework.dll
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\EntityFramework.xml
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\obj\Debug\HotelDeBotel.Domain.csprojAssemblyReference.cache
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\obj\Debug\HotelDeBotel.Domain.csproj.CoreCompileInputs.cache
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\obj\Debug\HotelDeBotel.Domain.csproj.CopyComplete
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\obj\Debug\HotelDeBotel.Domain.dll
+D:\Jaar2-Projecten\eindpodracht-kim-master\HotelDeBotel\HotelDeBotel.Domain\obj\Debug\HotelDeBotel.Domain.pdb

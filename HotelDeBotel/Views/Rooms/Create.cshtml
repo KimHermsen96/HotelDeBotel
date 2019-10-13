@@ -1,0 +1,66 @@
+﻿@model HotelDeBotel.Domain.Room
+
+<div class="container center_div mb-5">
+    <h3> Voeg een hotel kamer toe</h3>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <form class="mt-5">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                <div class="col-md-2">
+                    Naam
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    Kamer grootte
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control", @min = "2", @max = "5" } })
+                    @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    Prijs
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    Afbeelding
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mt-5">
+                <div class="col-md-12">
+                    <input type="submit" value="Maak kamer aan"  class="btn btn-dark btn-block" />
+                </div>
+            </div>
+        </form>
+    }
+
+    <div class="float-right mt-5 mb-5">
+        @Html.ActionLink("Terug naar lijst", "Index", null, new {@class="btn btn-dark"})
+    </div>
+
+</div>
